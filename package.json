@@ -1,0 +1,17 @@
+{
+  "name": "PopcornParty",
+  "description": "Video synchronization proof of concept",
+  "version": "1.0.0",
+  "author": "Hayzam <hayzam@gmail.com>",
+  "contributors": [
+    { "name": "Hayzam Sherif", "email": "hayzam@gmail.com" }
+  ],
+  "repository":{
+    "type": "git",
+    "url": "https://github.com/FazeLessWhite/PopcornParty"
+  },
+  "dependencies": {
+    "socket.io": "0.8.7"
+  },
+  "keywords": ["video", "synchronization", "realtime", "socket.io", "node.js"]
+}

@@ -1,0 +1,40 @@
+<html>
+  <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <script language="javascript" src="http://j.maxmind.com/app/geoip.js"></script>
+    <title>PopcornParty</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+      <div class="header">
+        <p>Enter your name below to use PopcornParty</p>
+      </div>
+
+        <input type="text" class="button" id="email" name="naam" placeholder="Your name">
+		<br><br>
+        <input type="submit" class="button" id="submit" onclick="myFunction()" value="Click here!">
+
+<br>
+<div id="log"></div>
+
+<footer>
+<h3>Made with love by Hayzam Sherif/ FaZe.js</h3>
+</footer>
+
+  </body>
+</html>
+<script>
+function myFunction() {
+var Name = document.getElementById('email').value; //Name of the mad user
+localStorage.setItem("name", Name);
+
+    var hoster1 = location.host;
+    var	hoster2 = hoster1.substring(0, hoster1.indexOf(':'));
+    var url = 'http://' + hoster2 + ':27069' + '/'
+    localStorage.setItem("url", url);
+
+	window.location.href = "play.html";
+}
+</script>
