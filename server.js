@@ -6,7 +6,7 @@ var listeners = 0
 
 app.listen(27070);
 function handler (req, res) {
-  console.log('Request starting...');     
+  console.log('Request is being processed.');     
   var filePath = '.' + req.url;
   if(filePath == './index.html')
 	filePath = './index.html';
@@ -46,11 +46,10 @@ function handler (req, res) {
 }
 
 io.sockets.on('connection', function (socket) {
-  console.info("connected")
+  console.info("Connected")
   socket.emit('assigned', ++listeners);
-
   socket.on('disconnect', function (socket) {
-    console.info("disconnected")
+    console.info("Disconnected")
     --listeners;
   });
   
@@ -76,9 +75,7 @@ function setbit(offset, value) {
 function nextPlayerId () {
   current = listeners;
   listeners++;
-
   axb = a ^ b;
-
   getOffset()
 }
 
