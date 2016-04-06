@@ -1,0 +1,42 @@
+
+<html>
+  <head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>PopcornParty</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+      <div class="header">
+        <p>Enter your name below to use PopcornParty</p>
+      </div>
+
+        <input type="text" class="button" id="email" name="naam" placeholder="Your name">
+		<br><br>
+		<input type="text" class="button" id="email2" name="room" placeholder="Room ID example : John">
+		<br><br>
+		<input type="text" class="button" id="url" name="url" placeholder="URL of the Movie : Example : http://80.90.30.120:27069/ or http://127.0.0.1:27069 if you are on your internal network itself">
+		<br><br>
+        <input type="submit" class="button" id="submit" onclick="myFunction()" value="Click here!">
+<br>
+<div id="log"></div>
+
+<footer>
+<h3>Made with love by Hayzam Sherif/ FaZe.js</h3>
+</footer>
+
+  </body>
+</html>
+<script>
+function myFunction() {
+var Name = document.getElementById('email').value; //Name of the mad user
+localStorage.setItem("name", Name);
+var roomId = document.getElementById('email2').value;
+localStorage.setItem("roomId", roomId);	
+var url = document.getElementById('url').value;
+localStorage.setItem("url", url);	
+	window.location.href = "play.html";
+	
+}
+</script>

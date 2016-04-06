@@ -1,83 +1,59 @@
-var app = require('http').createServer(handler)
-var io = require('socket.io').listen(app)
-var fs = require('fs')
-var path = require('path')
-var listeners = 0
+var express = require('express');
+var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+var serverPort = 27070;
+var fs = require('fs');
+var util = require('util');
 
-app.listen(27070);
-function handler (req, res) {
-  console.log('Request is being processed.');     
-  var filePath = '.' + req.url;
-  if(filePath == './index.html')
-	filePath = './index.html';
-  else if (filePath == './play.html')
-      filePath = './play.html'; 
-  var extname = path.extname(filePath);
-  var contentType = 'text/html';
-  switch (extname) {
-    case '.js':
-      contentType = 'text/javascript';
-      break;
-    case '.css':
-      contentType = 'text/css';
-      break;
-    case '.css':
-      contentType = 'text/css';
-      break;
-  }
-  fs.exists(filePath, function(exists) {
-    if (exists) {
-      fs.readFile(filePath, function(error, content) {
-        if (error) {
-          res.writeHead(500);
-          res.end();
-        }
-        else {
-          res.writeHead(200, { 'Content-Type': contentType });
-          res.end(content, 'utf-8');
-        }
-      });
-    }
-    else {
-      res.writeHead(404);
-      res.end();
-    }
-  });
-}
+var now = new Date();
+var dateStr = now.getUTCFullYear().toString() + "/" +
+          (now.getUTCMonth() + 1).toString() +
+          "/" + now.getUTCDate() + " " + now.getUTCHours() +
+          ":" + now.getUTCMinutes() + ":" + now.getUTCSeconds();
+
+var log_file = fs.createWriteStream(__dirname + '/log.txt', {flags : 'w'});
+var log_stdout = process.stdout;
+
+console.log = function(d) { //To Write to a console file
+  log_file.write(util.format(d) + '\n');
+  log_stdout.write(util.format(d) + '\n');
+};
+
+server.listen(serverPort);
+app.use(express.static(__dirname + '/public'));
+
+console.log('The server is running on ' + serverPort, true);
+console.log('Started on ' + dateStr)
+console.log('--------------------------------------------');
 
 io.sockets.on('connection', function (socket) {
-  console.info("Connected")
-  socket.emit('assigned', ++listeners);
-  socket.on('disconnect', function (socket) {
-    console.info("Disconnected")
-    --listeners;
-  });
-  
-var chat_log = [];  
-socket.on('chat', function(dataq){
-	chat_log.push(dataq.name+": "+dataq.message);
-	console.log(chat_log);
-	io.sockets.emit("update", {log: chat_log});
-})
 
-io.emit("start", {log: chat_log});
-  socket.on('play', function (data) {
-    io.sockets.emit('play', data);
-  }).on('pause', function (data) {
-    io.sockets.emit('pause', data);
-  });
+        socket.on('join room', function(data) {
+        socket.join(data.room);
+        console.log("User " + data.username + " Joined Room : " + data.room);
+        });
+		
+ 	socket.on('Message', function (data) {
+	io.sockets.in(data.room).emit('Inbox', data);
+			console.log('Message sent in ' + data.room);
+    	});
+
+ 	    socket.on('PlayVideo', function (data) {
+        socket.broadcast.to(data.room).emit('PlayVideo', data)
+			console.log('Video Played In ' + data.room + ' initiated by ' + data.username);
+    	});
+
+        socket.on('PauseVideo', function (data) {
+			console.log('Video Paused In ' + data.room + ' initiated by ' + data.username);
+        socket.broadcast.to(data.room).emit('PauseVideo', data)
+        });
+		
+        socket.on('SyncPlayback', function (data) {
+			console.log('Syncing Playback in ' + data.room + ' initiated by ' + data.username)
+        socket.broadcast.to(data.room).emit('SyncPlayback', data)
+        });
+
 });
 
-function setbit(offset, value) {
-  listeners += (1 << offset)
-}
 
-function nextPlayerId () {
-  current = listeners;
-  listeners++;
-  axb = a ^ b;
-  getOffset()
-}
-
-function getOffset (a, b) {
-}
