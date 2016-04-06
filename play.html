@@ -1,0 +1,35 @@
+<html>
+  <head>
+	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="css/play.css">
+<title>PopcornParty</title>
+<script src="js/play.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+	<audio id="myAudio">
+	  <source src="http://soundbible.com/grab.php?id=165&type=mp3" type="audio/mpeg">
+	</audio>
+  </head>
+  <body onload="setupVideo();">
+    <video id="media" width="1000" height="573" controls="true" preload="auto" src="" class="vidClass">
+    </video>
+
+<div id="chatter" class="chat">
+<ul class="list-group">
+</ul>
+</div>
+<input type="text" placeholder="Message" id="message" class="messageSubmit2" name="message" onkeydown = "if (event.keyCode == 13)
+                        document.getElementById('Sender').click()"></input>
+
+<button id="Sender" class="messageSubmit">Submit</button>
+<input type="submit" class="messageSubmit3" id="stopNotification" value="Mute Notifications" onClick="stopNotification()"></input>
+  </body>
+</html>
