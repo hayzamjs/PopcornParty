@@ -13,7 +13,7 @@ This project was inspired from another project called NetflixParty which is pret
 # Installation :
 
 * Copy the streamer.js file to the lib folder inside popcorntime. **VERY IMPORTANT IF STREAMING FROM POPCORNTIME**
-* Forward the port 27070. [AND 27069 if streaming from PopcornTime]
+* Forward the port 1818. [AND 27069 if streaming from PopcornTime]
 * To start the server :
   * Open shell/terminal of your machine.
   * git clone https://github.com/Fazelesswhite/PopcornParty.git
@@ -21,9 +21,9 @@ This project was inspired from another project called NetflixParty which is pret
   * npm install
   * node server.js
 * Turn on PopcornTime and then stream the playback to VLC using the VLC option. **VERY IMPORTANT**
-* To view the movie from your network, goto http://YourInternalIP:27070/index.html [Third box in index.html]
-* To view the movie from external networks, goto http://YourExternalIP:27070/index.html [Third box in index.html]
-* For other users to connect from outside your home you should share 'http://YourExternalIP:27070' [Third box in index.html]
+* To view the movie from your network, goto http://YourInternalIP:1818/index.html [Third box in index.html]
+* To view the movie from external networks, goto http://YourExternalIP:1818/index.html [Third box in index.html]
+* For other users to connect from outside your home you should share 'http://YourExternalIP:1818' [Third box in index.html]
 * If it is another link suppose, http://html5demos.com/assets/dizzy.mp4, then just use that in the link box! [Third box in index.html]
 
 ***For seeking problems, First seek then you should press sync play button below. 
