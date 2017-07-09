@@ -1,5 +1,3 @@
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/hayzamjs/PopcornParty)
-
 # PopcornParty <3
 
 This project was inspired from another project called NetflixParty which is pretty amazing, but was a little hard to setup also that it was only available for netflix, PopcornParty makes Popcorn Time available to be streamed with all your friends and family with very little effort. :)
