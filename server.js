@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-var serverPort = 27070;
+var serverPort = 1818;
 var fs = require('fs');
 var util = require('util');
 
