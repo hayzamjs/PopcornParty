@@ -21,6 +21,8 @@ console.log = function(d) { //To Write to a console file
 };
 
 server.listen(serverPort);
+app.set('port', (process.env.PORT || serverPort));
+
 app.use(express.static(__dirname + '/public'));
 
 console.log('The server is running on ' + serverPort, true);
