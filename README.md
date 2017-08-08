@@ -40,4 +40,9 @@ This project was inspired from another project called NetflixParty which is pret
 ## Any contributions are welcome and thank you! :)
 ## Ain't no party like a PopcornParty! XD
 
+### Buy me a cup of coffee <3
+
+1LHT8uYsmQW8rCQjx58CJVZLgGxKL5pL89
+
+^ Bitcoin RULZ ALL
 
